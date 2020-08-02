@@ -1,6 +1,7 @@
 package com.sushant.notes.notedetail
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +17,6 @@ import com.sushant.notes.database.NotesDatabase
 import com.sushant.notes.databinding.NoteDetailFragmentBinding
 
 class NoteDetailFragment : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,19 +26,17 @@ class NoteDetailFragment : Fragment() {
         val arguments = NoteDetailFragmentArgs.fromBundle(requireArguments())
         val dataSource = NotesDatabase.getInstance(application)!!.notesDatabaseDao
         val viewModelFactory = NoteDetailViewModelFactory(arguments.noteId, dataSource)
-
         val noteDetailViewModel = ViewModelProvider(this, viewModelFactory).get(NoteDetailViewModel::class.java)
         binding.noteDetailViewModel = noteDetailViewModel
         binding.lifecycleOwner = this
+        Log.d("NoteDetailFragment", "${binding.postTitleText}")
         noteDetailViewModel.navigateToNoteTracker.observe(viewLifecycleOwner, Observer {
+//            Log.d("NoteDetailFragment", "Outside observer method")
             if(it == true) {
-                this.findNavController().navigate(
-                    NoteDetailFragmentDirections.actionNoteDetailFragmentToNotesTrackerFragment()
-                )
+                this.findNavController().navigate(NoteDetailFragmentDirections.actionNoteDetailFragmentToNotesTrackerFragment())
                 noteDetailViewModel.doneNavigating()
             }
         })
-
         return binding.root
     }
 }

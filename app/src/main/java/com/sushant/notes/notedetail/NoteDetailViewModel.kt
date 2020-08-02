@@ -6,17 +6,24 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sushant.notes.database.Notes
 import com.sushant.notes.database.NotesDao
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.*
 
 class NoteDetailViewModel(private val noteId : Long = 0L, dataSource : NotesDao) : ViewModel() {
     val database = dataSource
     private val viewModelJob = Job()
 
-    private val note = MediatorLiveData<Notes>()
+    private val note =  MediatorLiveData<Notes>()
+    fun getNote() = note
     init {
         note.addSource(database.getNoteWithId(noteId), note::setValue)
     }
-    fun getNote() = note
+//    init {
+//        note.addSource(database.getNoteWithId(noteId), note::setValue)
+//    }
+//    fun getNote() : LiveData<Notes> {
+//        note = database.getNoteWithId(noteId)
+//
+//    }
     private val _navigateToNoteTracker = MutableLiveData<Boolean?>()
     val navigateToNoteTracker: LiveData<Boolean?>
         get() = _navigateToNoteTracker
@@ -32,7 +39,4 @@ class NoteDetailViewModel(private val noteId : Long = 0L, dataSource : NotesDao)
         _navigateToNoteTracker.value = null
     }
 
-    fun onClose() {
-        _navigateToNoteTracker.value = true
-    }
 }

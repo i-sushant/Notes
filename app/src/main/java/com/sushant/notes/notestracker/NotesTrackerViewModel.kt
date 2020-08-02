@@ -1,6 +1,7 @@
 package com.sushant.notes.notestracker
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.sushant.notes.database.Notes
@@ -10,10 +11,6 @@ import kotlinx.coroutines.*
 class NotesTrackerViewModel(val database: NotesDao, application : Application) {
 
     val notes = database.getAllNotes()
-
-//    private val _navigateToNotesPage= MutableLiveData<Notes>()
-//    val navigateToNotesPage : LiveData<Notes>
-//        get() = _navigateToNotesPage
     private var _navigateToNoteDataPage= MutableLiveData<Long>()
     val navigateToNotesDataPage : LiveData<Long>
         get() = _navigateToNoteDataPage
@@ -26,7 +23,6 @@ class NotesTrackerViewModel(val database: NotesDao, application : Application) {
     fun onClear() {
         uiScope.launch {
             clear()
-
         }
     }
     private suspend fun clear() {
@@ -34,11 +30,12 @@ class NotesTrackerViewModel(val database: NotesDao, application : Application) {
             database.clear()
         }
     }
-//    fun onNoteClicked(noteId : Long) {
-//        _navigateToNoteDataPage.value = noteId
-//    }
+
     fun showSelectedItem(noteId : Long) {
         _navigateToNoteDataPage.value = noteId
+    }
+    fun onNavigatedToDetailsFragment() {
+        _navigateToNoteDataPage.value = null
     }
     fun onStartNotemaking() {
         _showNotesDetailPage.value = true
@@ -46,5 +43,6 @@ class NotesTrackerViewModel(val database: NotesDao, application : Application) {
     fun doneNavigating() {
         _showNotesDetailPage.value = false
     }
+
 
 }

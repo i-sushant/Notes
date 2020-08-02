@@ -8,7 +8,7 @@
             type="com.sushant.notes.database.Notes" />
         <variable
             name="clickListener"
-            type="com.sushant.notes.notestracker.NotesAdapter.NotesListener" />
+            type="com.sushant.notes.notestracker.NotesListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

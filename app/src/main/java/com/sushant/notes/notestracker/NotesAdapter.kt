@@ -14,11 +14,12 @@ class NotesAdapter(private val clickListener: NotesListener) : ListAdapter<Notes
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(clickListener, getItem(position)!!)
+        val item = getItem(position)
+        holder.bind(clickListener, item)
     }
     class ViewHolder private constructor(val binding : GridItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(clickListener: NotesListener, item : Notes) {
-            binding.notes = item
+            binding.notes= item
             binding.clickListener = clickListener
             binding.executePendingBindings()
         }
@@ -30,17 +31,16 @@ class NotesAdapter(private val clickListener: NotesListener) : ListAdapter<Notes
             }
         }
     }
-    class NotesDiffCallback : DiffUtil.ItemCallback<Notes>() {
-        override fun areItemsTheSame(oldItem: Notes, newItem: Notes): Boolean {
-            return oldItem.noteId == newItem.noteId
-        }
-
-        override fun areContentsTheSame(oldItem: Notes, newItem: Notes): Boolean {
-            return oldItem == newItem
-        }
-    }
-    class NotesListener(val clickListener : (noteId : Long) -> Unit) {
-        fun onClick(note : Notes) = clickListener(note.noteId)
+}
+class NotesDiffCallback : DiffUtil.ItemCallback<Notes>() {
+    override fun areItemsTheSame(oldItem: Notes, newItem: Notes): Boolean {
+        return oldItem.noteId == newItem.noteId
     }
 
+    override fun areContentsTheSame(oldItem: Notes, newItem: Notes): Boolean {
+        return oldItem == newItem
+    }
+}
+class NotesListener(val clickListener : (noteId : Long) -> Unit) {
+    fun onClick(note : Notes) = clickListener(note.noteId)
 }

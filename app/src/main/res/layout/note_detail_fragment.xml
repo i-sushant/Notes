@@ -2,7 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     tools:context=".notedetail.NoteDetailFragment">
 
     <data>
@@ -65,7 +64,7 @@
             android:layout_marginTop="24dp"
             android:fontFamily="@font/lato_bold"
             android:letterSpacing="0.08"
-            app:postDescription="@{noteDetailViewModel.note}"
+            app:postTitle="@{noteDetailViewModel.note}"
             android:textColor="@color/colorWhite"
             android:textSize="36sp"
             android:textStyle="bold"
@@ -90,7 +89,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
-            app:postTitle="@{noteDetailViewModel.note}"
+            app:postDescription="@{noteDetailViewModel.note}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/third_guideline2"
             app:layout_constraintStart_toStartOf="@+id/third_guideline"
