@@ -30,4 +30,8 @@ interface NotesDao {
     @Query("SELECT * FROM notes_table ORDER BY noteId DESC LIMIT 1")
     fun getCurrentNote(): Notes?
 
+    @Query("DELETE from notes_table where noteId = :key")
+    fun deleteNoteById(key : Long)
+
+
 }

@@ -20,6 +20,7 @@ class NotesTrackerViewModel(val database: NotesDao, application : Application) {
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
+
     fun onClear() {
         uiScope.launch {
             clear()

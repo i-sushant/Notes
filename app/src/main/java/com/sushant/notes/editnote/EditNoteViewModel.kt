@@ -3,9 +3,11 @@ package com.sushant.notes.editnote
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.sushant.notes.R
 import com.sushant.notes.database.Notes
 import com.sushant.notes.database.NotesDao
 import kotlinx.coroutines.*
+import kotlin.random.Random
 
 class EditNoteViewModel(dataSource : NotesDao) : ViewModel() {
     val database = dataSource
@@ -49,6 +51,16 @@ class EditNoteViewModel(dataSource : NotesDao) : ViewModel() {
             val note = Notes()
             note.note_info = _post_description.value.toString()
             note.note_title = _post_title.value.toString()
+            val rand = Random(System.nanoTime())
+            val color = when(rand.nextInt(5 - 1 + 1) + 1) {
+                1 -> R.drawable.rounded_corner_lemon
+                2 -> R.drawable.rounded_corner_lemon_dark
+                3 -> R.drawable.rounded_corner_violet
+                4 -> R.drawable.rounded_corner_orange_warm
+                5 -> R.drawable.rounded_corner_brown_light
+                else -> -1
+            }
+            note.color = color
             insert(note)
 //            currentNote.value = getCurrentNoteFromDatabase()
         }

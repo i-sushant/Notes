@@ -1,10 +1,12 @@
 package com.sushant.notes.notestracker
 
-import android.util.Log
+
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
+import com.sushant.notes.R
 import com.sushant.notes.database.Notes
+import kotlin.random.Random
 
 
 @BindingAdapter("postTitle")
@@ -19,3 +21,10 @@ fun TextView.setPostDescription(item : Notes?) {
         text = item.note_info
     }
 }
+@BindingAdapter("postBackground")
+fun TextView.setPostBackground(item : Notes?) {
+    item?.let {
+        background = ContextCompat.getDrawable(context, item.color)
+    }
+}
+

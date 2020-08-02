@@ -51,9 +51,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corners_colored_full"
+            android:onClick="@{() -> editViewModel.onSaveClickListener()}"
             android:text="Save"
             android:textColor="#FFFFFF"
-            android:onClick="@{() -> editViewModel.onSaveClickListener()}"
             app:layout_constraintEnd_toStartOf="@+id/second_guideline2"
             app:layout_constraintTop_toTopOf="@+id/second_guideline3" />
 
@@ -70,6 +70,7 @@
             android:textColorHint="@color/colorTextAccent"
             android:textSize="30sp"
             android:textStyle="bold"
+            android:cursorVisible="false"
             app:layout_constraintEnd_toStartOf="@+id/second_guideline2"
             app:layout_constraintStart_toStartOf="@+id/second_guideline"
             app:layout_constraintTop_toBottomOf="@+id/back_button" />
@@ -79,6 +80,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:ems="10"
+            android:cursorVisible="false"
             android:fontFamily="@font/lato"
             android:gravity="start|top"
             android:hint="Type Something. . ."
@@ -90,6 +92,8 @@
             app:layout_constraintEnd_toStartOf="@+id/second_guideline2"
             app:layout_constraintStart_toStartOf="@+id/second_guideline"
             app:layout_constraintTop_toBottomOf="@+id/post_title" />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

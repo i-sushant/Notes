@@ -11,5 +11,8 @@ data class Notes (
     var note_title : String = "",
 
     @ColumnInfo(name = "note_info")
-    var note_info : String = ""
+    var note_info : String = "",
+
+    @ColumnInfo(name = "note_color")
+    var color : Int = 0
 )
