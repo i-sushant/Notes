@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".editnote.EditNoteFragment">
+    <data>
+        <variable
+            name="editViewModel"
+            type="com.sushant.notes.editnote.EditNoteViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/second_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/second_guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="400dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/second_guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_corners_colored_full"
+            android:onClick="@{() -> editViewModel.navigateToNotesTracker()}"
+            android:paddingStart="8dp"
+            app:layout_constraintStart_toStartOf="@+id/second_guideline"
+            app:layout_constraintTop_toTopOf="@+id/second_guideline3"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24"
+            tools:ignore="ContentDescription" />
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_colored_full"
+            android:text="Save"
+            android:textColor="#FFFFFF"
+            android:onClick="@{() -> editViewModel.onSaveClickListener()}"
+            app:layout_constraintEnd_toStartOf="@+id/second_guideline2"
+            app:layout_constraintTop_toTopOf="@+id/second_guideline3" />
+
+        <EditText
+            android:id="@+id/post_title"
+            android:layout_width="371dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:fontFamily="@font/lato_bold"
+            android:hint="Title"
+            android:inputType="textPersonName"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorTextAccent"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:cursorVisible="true"
+
+            app:layout_constraintEnd_toStartOf="@+id/second_guideline2"
+            app:layout_constraintStart_toStartOf="@+id/second_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/back_button" />
+
+        <EditText
+            android:id="@+id/post_description"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:ems="10"
+            android:fontFamily="@font/lato"
+            android:gravity="start|top"
+            android:hint="Type Something. . ."
+            android:inputType="textMultiLine"
+            android:textColor="#FFFFFF"
+            android:textColorHint="@color/colorTextAccent"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/second_guideline2"
+            app:layout_constraintStart_toStartOf="@+id/second_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/post_title" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
