@@ -5,7 +5,7 @@
     <color name="colorPrimaryDark">#134e6f</color>
     <color name="colorAccent">#3b3b3b</color>
     <color name="colorTextAccent">#929292</color>
-    <color name="colorOrangeWarm">#fe9a36</color>
+    <color name="colorOrangeWarm">#FFAB91</color>
     <color name="colorLemon">#cbdb57</color>
     <color name="colorViolet">#9585ba</color>
     <color name="colorBlackLight">#5c4f45</color>
@@ -16,4 +16,7 @@
     <color name="low_priority">#ffa822</color>
     <color name="colorGray">#dee0e6</color>
     <color name="colorWhite">#ffffff</color>
-</resources>
+    <color name="colorBlue">#80DEEA</color>
+    <color name="colorAqua">#80CBC4</color>
+    <color name="colorPink">#F48FB1</color>
+    </resources>

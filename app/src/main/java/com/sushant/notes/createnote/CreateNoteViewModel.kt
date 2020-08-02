@@ -1,4 +1,4 @@
-package com.sushant.notes.editnote
+package com.sushant.notes.createnote
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +9,7 @@ import com.sushant.notes.database.NotesDao
 import kotlinx.coroutines.*
 import kotlin.random.Random
 
-class EditNoteViewModel(dataSource : NotesDao) : ViewModel() {
+class CreateNoteViewModel(dataSource : NotesDao) : ViewModel() {
     val database = dataSource
     private var _post_title = MutableLiveData<String>()
     val post_title : LiveData<String>
@@ -58,19 +58,23 @@ class EditNoteViewModel(dataSource : NotesDao) : ViewModel() {
                 3 -> R.drawable.rounded_corner_violet
                 4 -> R.drawable.rounded_corner_orange_warm
                 5 -> R.drawable.rounded_corner_brown_light
+                6 -> R.drawable.rounded_corner_blue
+                7 -> R.drawable.rounded_corner_aqua
+                8 -> R.drawable.rounded_corner_pink
                 else -> -1
             }
             note.color = color
             insert(note)
-//            currentNote.value = getCurrentNoteFromDatabase()
         }
         navigateToNotesTracker()
     }
     fun navigateToNotesTracker() {
-        _navigate_to_notestracker.value = true;
+        _navigate_to_notestracker.value = true
+    }
+    fun navigateToNotesTrackerCompleted() {
+        _navigate_to_notestracker.value = false
     }
     override fun onCleared() {
-
         super.onCleared()
         viewModelJob.cancel()
     }

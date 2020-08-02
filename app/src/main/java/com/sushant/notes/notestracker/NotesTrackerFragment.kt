@@ -31,7 +31,7 @@ class NotesTrackerFragment : Fragment() {
         binding.lifecycleOwner = this
         notesTrackerViewModel.showNotesDetailPage.observe(viewLifecycleOwner, Observer {
             if(it == true){
-                this.findNavController().navigate(NotesTrackerFragmentDirections.actionNotesTrackerFragmentToEditNoteFragment())
+                this.findNavController().navigate(NotesTrackerFragmentDirections.actionNotesTrackerFragmentToCreateNoteFragment())
                 notesTrackerViewModel.doneNavigating()
             }
         })

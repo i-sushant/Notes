@@ -2,11 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".editnote.EditNoteFragment">
+    tools:context=".createnote.CreateNoteFragment">
     <data>
         <variable
-            name="editViewModel"
-            type="com.sushant.notes.editnote.EditNoteViewModel" />
+            name="createViewModel"
+            type="com.sushant.notes.createnote.CreateNoteViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/rounded_corners_colored_full"
-            android:onClick="@{() -> editViewModel.navigateToNotesTracker()}"
+            android:onClick="@{() -> createViewModel.navigateToNotesTracker()}"
             android:paddingStart="8dp"
             app:layout_constraintStart_toStartOf="@+id/second_guideline"
             app:layout_constraintTop_toTopOf="@+id/second_guideline3"
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corners_colored_full"
-            android:onClick="@{() -> editViewModel.onSaveClickListener()}"
+            android:onClick="@{() -> createViewModel.onSaveClickListener()}"
             android:text="Save"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toStartOf="@+id/second_guideline2"
@@ -92,9 +92,5 @@
             app:layout_constraintEnd_toStartOf="@+id/second_guideline2"
             app:layout_constraintStart_toStartOf="@+id/second_guideline"
             app:layout_constraintTop_toBottomOf="@+id/post_title" />
-
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
